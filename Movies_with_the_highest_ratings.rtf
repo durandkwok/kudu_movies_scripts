@@ -1,0 +1,283 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red83\green83\blue83;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid6}
+{\list\listtemplateid7\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid601\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid7}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}{\listoverride\listid7\listoverridecount0\ls7}}
+\margl1440\margr1440\vieww16200\viewh13200\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Movies_with_the_highest_ratings script\
+\pard\pardeftab720
+
+\b\fs40 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+Using Impala for Analytics and DML Operations in Kudu
+\b0\fs32 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\pard\tx720\pardeftab720\sl380
+\cf2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl380
+\ls1\ilvl0\cf2 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Check the counts. \'a0Movie_info_kudu is a dimension table with 10,681 records. Ratings_kudu is a fact table with 10,000,054 records and 2,048,230 records with a rating of NULL.\uc0\u8232 \
+\pard\pardeftab720
+
+\fs24 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\pard\pardeftab720\sl380
+
+\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 select count(*) from ratings_kudu
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 select count(*) from movie_info_kudu
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl380
+\ls2\ilvl0
+\fs32 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 List ratings and how many people voted
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\pard\pardeftab720\sl380
+
+\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+select a.rating, count(userid) as voted
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 from ratings_kudu a, movie_info_kudu b
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 where 
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 a.movieid = b.movieid
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 group by a.rating
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 order by rating desc
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\pard\pardeftab720
+\cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl380
+\ls3\ilvl0
+\fs32 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Let\'92s default their rating to 3 (average) then rerun previous query.
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\pard\pardeftab720\sl380
+
+\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+#Default rating to 3 (average) for people that didn\'92t vote.
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 update ratings_kudu set rating = 3 where rating is null;
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl380
+\ls4\ilvl0
+\fs32 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 List genres related to Action movies with breakdown of all ratings and how many people voted
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\pard\pardeftab720\sl380
+
+\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+select b.genres,a.rating, count(userid) as voted
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 from ratings_kudu a, movie_info_kudu b
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 where a.movieid = b.movieid
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 and b.genres like 'Action%'
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 group by b.genres, a.rating
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 order by b.genres, rating desc
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl380
+\ls5\ilvl0
+\fs32 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The query results above shows variations of action related movies. \'a0Let\'92s group all action related to just one genre call Action and rerun previous query. (Demonstrates change in dimension table)\
+\pard\pardeftab720
+
+\fs24 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\pard\pardeftab720\sl380
+
+\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 # Update all Action related genres to just one category \'91Action\'92
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 update movie_info_kudu set genres = 'Action'
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\pard\pardeftab720
+
+\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 where genres like 'Action%';\
+\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl380
+\ls6\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 List all Action movies with top ratings.\uc0\u8232 
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\pard\pardeftab720\sl380
+
+\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 select b.genres, b.title, max(a.rating) as top_rating
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 from ratings_kudu a, movie_info_kudu b
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 where a.movieid = b.movieid
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 and b.genres like 'Action%'
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 group by b.genres,b.title
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 order by b.genres, top_rating desc
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl380
+\ls7\ilvl0
+\fs32 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Let\'92s backup the \'91Action\'92 \'a0ratings data set. \'a0Demonstrate (CTAS)\uc0\u8232 \
+\pard\pardeftab720\sl380
+\cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 create table ratings_kudu_action
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 distribute by hash (userid, movieid) into 3 buckets
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 TBLPROPERTIES (
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 'storage_handler'='com.cloudera.kudu.hive.KuduStorageHandler'
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 ,'kudu.table_name'='ratings_kudu_action'
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 ,'kudu.master_addresses'='<Kudu Master IP>:7051'
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 ,'kudu.key_columns'='userid, movieid'
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 )
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 as
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 select a.* from
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 ratings_kudu a, movie_info_kudu b
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+
+\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 where \
+a.movieid = b.movieid
+\fs24 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\pard\pardeftab720
+
+\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 and b.genres like 'Action%';\
+\pard\pardeftab720
+
+\fs24 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+}
