@@ -46,13 +46,14 @@ Let’s group all action related to just one genre call Action and rerun previou
 	where genres like 'Action%';
 
 
-List all Action movies with top ratings.
+List all Action movies with top ratings
+
 	•	select b.genres, b.title, max(a.rating) as top_rating
 	from ratings_kudu a, movie_info_kudu b
 	where a.movieid = b.movieid
 	and b.genres like 'Action%'
 	group by b.genres,b.title
-	order by b.genres, top_rating desc
+	order by b.genres, top_rating desc;
 
 
 
