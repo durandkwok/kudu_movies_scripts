@@ -4,7 +4,9 @@ Movies_with_the_highest_ratings script
 
 Using Impala for Analytics and DML Operations in Kudu
 
-	•	Check the counts.  Movie_info_kudu is a dimension table with 10,681 records. Ratings_kudu is a fact table with 10,000,054 records and 2,048,230 records with a rating of NULL. 
+	•	Check the counts.  
+	Movie_info_kudu is a dimension table with 10,681 records. 
+	Ratings_kudu is a fact table with 10,000,054 records and 2,048,230 records with a rating of NULL. 
 
 select count(*) from ratings_kudu
 select count(*) from movie_info_kudu
@@ -35,7 +37,9 @@ group by b.genres, a.rating
 order by b.genres, rating desc
 
 
-	•	The query results above shows variations of action related movies.  Let’s group all action related to just one genre call Action and rerun previous query. (Demonstrates change in dimension table)
+	•	The query results above shows variations of action related movies.  
+	Let’s group all action related to just one genre call Action and rerun previous query. 
+	(Demonstrates change in dimension table)
 
 # Update all Action related genres to just one category ‘Action’
 update movie_info_kudu set genres = 'Action'
