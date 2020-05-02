@@ -55,7 +55,8 @@ List all Action movies with top ratings. 
 	order by b.genres, top_rating desc
 
 
-Let’s backup the ‘Action’  ratings data set.  Demonstrate (CTAS) 
+Let’s backup the ‘Action’  ratings data set.  Demonstrate (CTAS)
+
 	•	create table ratings_kudu_action
 	distribute by hash (userid, movieid) into 3 buckets
 	TBLPROPERTIES (
