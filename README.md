@@ -8,12 +8,12 @@ Check the counts.  
 Movie_info_kudu is a dimension table with 10,681 records. 
 Ratings_kudu is a fact table with 10,000,054 records and 2,048,230 records with a rating of NULL. 
 
-•	select count(*) from ratings_kudu
-•	select count(*) from movie_info_kudu
+	•	select count(*) from ratings_kudu
+	•	select count(*) from movie_info_kudu
 
 List ratings and how many people voted
 
-•	select a.rating, count(userid) as voted
+	•	select a.rating, count(userid) as voted
 	from ratings_kudu a, movie_info_kudu b
 	where 
 	a.movieid = b.movieid
