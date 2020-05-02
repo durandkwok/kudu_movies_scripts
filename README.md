@@ -4,11 +4,11 @@ Movies_with_the_highest_ratings script
 
 Using Impala for Analytics and DML Operations in Kudu
 
-	•	Check the counts.  
-	Movie_info_kudu is a dimension table with 10,681 records. 
-	Ratings_kudu is a fact table with 10,000,054 records and 2,048,230 records with a rating of NULL. 
+Check the counts.  
+Movie_info_kudu is a dimension table with 10,681 records. 
+Ratings_kudu is a fact table with 10,000,054 records and 2,048,230 records with a rating of NULL. 
 
-select count(*) from ratings_kudu
+-select count(*) from ratings_kudu
 select count(*) from movie_info_kudu
 
 	•	List ratings and how many people voted
